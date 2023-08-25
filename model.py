@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-from autogluon.tabular import TabularDataset, TabularPredictor
-import pickle
 import xgboost as xgb
 # model = TabularPredictor.load("AutogluonModels/ag-20230825_174102/",require_py_version_match=False)
 
@@ -30,7 +28,7 @@ def predict(Age, Subscription_Length_Months, Monthly_Bill, Total_Usage_GB, Gende
                 ['Age', 'Subscription_Length_Months', 'Monthly_Bill', 'Total_Usage_GB','Gender_Male', 'usage_to_bill', 'usage_subs', 'usage_age', 'relative_bill', 'cost_per_month', 'diff']
             )
     op = model.predict(
-            TabularDataset(input)
+            input
         )
     
     return op
